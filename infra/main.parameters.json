@@ -131,6 +131,9 @@
     "openAiApiOrganization": {
       "value": "${OPENAI_ORGANIZATION}"
     },
+    "openAiResourceGroupLocation": {
+      "value": "${AZURE_OPENAI_LOCATION}"
+    },
     "useApplicationInsights": {
       "value": "${AZURE_USE_APPLICATION_INSIGHTS=true}"
     },
