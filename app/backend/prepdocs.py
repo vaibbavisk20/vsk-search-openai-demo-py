@@ -468,4 +468,4 @@ if __name__ == "__main__":
         )
 
     loop.run_until_complete(main(ingestion_strategy, setup_index=not args.remove and not args.removeall))
-    loop.close()
+    # loop.close()

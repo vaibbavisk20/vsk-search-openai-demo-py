@@ -1,4 +1,5 @@
 param searchServiceName string = ''
+param location string = resourceGroup().location
 
 @description('Resource ID of log analytics workspace.')
 param workspaceId string
@@ -26,8 +27,10 @@ var diagnosticsMetrics = [
   }
 ]
 
-resource searchService 'Microsoft.Search/searchServices@2023-11-01' existing = {
+resource searchService 'Microsoft.Search/searchServices@2023-11-01' = {
   name: searchServiceName
+  location: location
+  sku: {name: 'standard'} 
 }
 
 resource app_diagnosticSettings 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = {
