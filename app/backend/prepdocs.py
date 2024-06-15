@@ -363,6 +363,7 @@ if __name__ == "__main__":
     )
     parser.add_argument("--verbose", "-v", action="store_true", help="Verbose output")
     args = parser.parse_args()
+    print("args", args)
 
     if args.verbose:
         logging.basicConfig(format="%(message)s")
