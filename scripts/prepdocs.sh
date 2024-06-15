@@ -1,5 +1,5 @@
  #!/bin/sh
-GLOBIGNORE=(*)
+# GLOBIGNORE="*"
 . ./scripts/loadenv.sh
 
 echo 'Running "prepdocs.py bash"'
