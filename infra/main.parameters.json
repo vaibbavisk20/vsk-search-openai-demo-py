@@ -250,6 +250,12 @@
     },
     "runningOnAdo": {
       "value": "${TF_BUILD}"
+    },
+    "bringYourOwnData": {
+      "value": "${BRING_YOUR_OWN_DATA}"
+    },
+    "customDataPath": {
+      "value": "${CUSTOM_DATA_PATH}"
     }
   }
 }

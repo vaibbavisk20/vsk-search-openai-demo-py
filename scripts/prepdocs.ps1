@@ -65,8 +65,15 @@ if ($env:USE_FEATURE_INT_VECTORIZATION) {
   $integratedVectorizationArg = "--useintvectorization $env:USE_FEATURE_INT_VECTORIZATION"
 }
 
-$cwd = (Get-Location)
-$dataArg = "`"$cwd/data/*`""
+azd env get-values
+
+if ($env:BRING_YOUR_OWN_DATA -eq $true) {
+  $dataArg = "`"../$env:CUSTOM_DATA_PATH/*`""
+} else {
+  $cwd = (Get-Location)
+  $dataArg = "`"$cwd/data/*`""
+}
+
 
 $argumentList = "./app/backend/prepdocs.py $dataArg --verbose " + `
 "--subscriptionid $env:AZURE_SUBSCRIPTION_ID " + `
