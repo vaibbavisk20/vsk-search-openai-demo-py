@@ -1,5 +1,5 @@
  #!/bin/sh
-
+GLOBIGNORE=(*)
 . ./scripts/loadenv.sh
 
 echo 'Running "prepdocs.py bash"'
@@ -73,7 +73,23 @@ else
   echo "BRING_YOUR_OWN_DATA is false = $files"
 fi
   
-./.venv/bin/python ./app/backend/prepdocs.py $files --verbose \
+# ./.venv/bin/python ./app/backend/prepdocs.py $files --verbose \
+#   --subscriptionid $AZURE_SUBSCRIPTION_ID  \
+#   --storageaccount "$AZURE_STORAGE_ACCOUNT" --container "$AZURE_STORAGE_CONTAINER" --storageresourcegroup $AZURE_STORAGE_RESOURCE_GROUP \
+#   --searchservice "$AZURE_SEARCH_SERVICE" --index "$AZURE_SEARCH_INDEX" \
+#   $searchAnalyzerNameArg \
+#   --openaihost "$OPENAI_HOST" --openaimodelname "$AZURE_OPENAI_EMB_MODEL_NAME" $openAiDimensionsArg \
+#   --openaiservice "$AZURE_OPENAI_SERVICE" --openaideployment "$AZURE_OPENAI_EMB_DEPLOYMENT"  \
+#   --openaikey "$OPENAI_API_KEY" --openaiorg "$OPENAI_ORGANIZATION" \
+#   --documentintelligenceservice "$AZURE_DOCUMENTINTELLIGENCE_SERVICE" \
+#   $searchImagesArg $visionEndpointArg \
+#   $adlsGen2StorageAccountArg $adlsGen2FilesystemArg $adlsGen2FilesystemPathArg \
+#   $tenantArg $aclArg \
+#   $disableVectorsArg $localPdfParserArg $localHtmlParserArg \
+#   $integratedVectorizationArg \
+
+if [ "$BRING_YOUR_OWN_DATA" = true ]; then
+  ./.venv/bin/python ./app/backend/prepdocs.py \'.././$CUSTOM_DATA_PATH/\*\' --verbose \
   --subscriptionid $AZURE_SUBSCRIPTION_ID  \
   --storageaccount "$AZURE_STORAGE_ACCOUNT" --container "$AZURE_STORAGE_CONTAINER" --storageresourcegroup $AZURE_STORAGE_RESOURCE_GROUP \
   --searchservice "$AZURE_SEARCH_SERVICE" --index "$AZURE_SEARCH_INDEX" \
@@ -87,35 +103,19 @@ fi
   $tenantArg $aclArg \
   $disableVectorsArg $localPdfParserArg $localHtmlParserArg \
   $integratedVectorizationArg \
-
-# if [ "$BRING_YOUR_OWN_DATA" = true ]; then
-#   ./.venv/bin/python ./app/backend/prepdocs.py \'.././$CUSTOM_DATA_PATH/*\' --verbose \
-#   --subscriptionid $AZURE_SUBSCRIPTION_ID  \
-#   --storageaccount "$AZURE_STORAGE_ACCOUNT" --container "$AZURE_STORAGE_CONTAINER" --storageresourcegroup $AZURE_STORAGE_RESOURCE_GROUP \
-#   --searchservice "$AZURE_SEARCH_SERVICE" --index "$AZURE_SEARCH_INDEX" \
-#   $searchAnalyzerNameArg \
-#   --openaihost "$OPENAI_HOST" --openaimodelname "$AZURE_OPENAI_EMB_MODEL_NAME" $openAiDimensionsArg \
-#   --openaiservice "$AZURE_OPENAI_SERVICE" --openaideployment "$AZURE_OPENAI_EMB_DEPLOYMENT"  \
-#   --openaikey "$OPENAI_API_KEY" --openaiorg "$OPENAI_ORGANIZATION" \
-#   --documentintelligenceservice "$AZURE_DOCUMENTINTELLIGENCE_SERVICE" \
-#   $searchImagesArg $visionEndpointArg \
-#   $adlsGen2StorageAccountArg $adlsGen2FilesystemArg $adlsGen2FilesystemPathArg \
-#   $tenantArg $aclArg \
-#   $disableVectorsArg $localPdfParserArg $localHtmlParserArg \
-#   $integratedVectorizationArg \
-# else
-#   ./.venv/bin/python ./app/backend/prepdocs.py './data/*' --verbose \
-#   --subscriptionid $AZURE_SUBSCRIPTION_ID  \
-#   --storageaccount "$AZURE_STORAGE_ACCOUNT" --container "$AZURE_STORAGE_CONTAINER" --storageresourcegroup $AZURE_STORAGE_RESOURCE_GROUP \
-#   --searchservice "$AZURE_SEARCH_SERVICE" --index "$AZURE_SEARCH_INDEX" \
-#   $searchAnalyzerNameArg \
-#   --openaihost "$OPENAI_HOST" --openaimodelname "$AZURE_OPENAI_EMB_MODEL_NAME" $openAiDimensionsArg \
-#   --openaiservice "$AZURE_OPENAI_SERVICE" --openaideployment "$AZURE_OPENAI_EMB_DEPLOYMENT"  \
-#   --openaikey "$OPENAI_API_KEY" --openaiorg "$OPENAI_ORGANIZATION" \
-#   --documentintelligenceservice "$AZURE_DOCUMENTINTELLIGENCE_SERVICE" \
-#   $searchImagesArg $visionEndpointArg \
-#   $adlsGen2StorageAccountArg $adlsGen2FilesystemArg $adlsGen2FilesystemPathArg \
-#   $tenantArg $aclArg \
-#   $disableVectorsArg $localPdfParserArg $localHtmlParserArg \
-#   $integratedVectorizationArg \
-# fi
+else
+  ./.venv/bin/python ./app/backend/prepdocs.py './data/*' --verbose \
+  --subscriptionid $AZURE_SUBSCRIPTION_ID  \
+  --storageaccount "$AZURE_STORAGE_ACCOUNT" --container "$AZURE_STORAGE_CONTAINER" --storageresourcegroup $AZURE_STORAGE_RESOURCE_GROUP \
+  --searchservice "$AZURE_SEARCH_SERVICE" --index "$AZURE_SEARCH_INDEX" \
+  $searchAnalyzerNameArg \
+  --openaihost "$OPENAI_HOST" --openaimodelname "$AZURE_OPENAI_EMB_MODEL_NAME" $openAiDimensionsArg \
+  --openaiservice "$AZURE_OPENAI_SERVICE" --openaideployment "$AZURE_OPENAI_EMB_DEPLOYMENT"  \
+  --openaikey "$OPENAI_API_KEY" --openaiorg "$OPENAI_ORGANIZATION" \
+  --documentintelligenceservice "$AZURE_DOCUMENTINTELLIGENCE_SERVICE" \
+  $searchImagesArg $visionEndpointArg \
+  $adlsGen2StorageAccountArg $adlsGen2FilesystemArg $adlsGen2FilesystemPathArg \
+  $tenantArg $aclArg \
+  $disableVectorsArg $localPdfParserArg $localHtmlParserArg \
+  $integratedVectorizationArg \
+fi
