@@ -363,7 +363,7 @@ if __name__ == "__main__":
     )
     parser.add_argument("--verbose", "-v", action="store_true", help="Verbose output")
     args = parser.parse_args()
-    print("args", args)
+    logger.info("args", args)
 
     if args.verbose:
         logging.basicConfig(format="%(message)s")
@@ -407,7 +407,7 @@ if __name__ == "__main__":
         search_images=args.searchimages,
         storage_key=clean_key_if_exists(args.storagekey),
     )
-    print("arg.files", args.files)
+    logger.info("arg.files", args.files)
     list_file_strategy = setup_list_file_strategy(
         azure_credential=azd_credential,
         local_files=args.files,
