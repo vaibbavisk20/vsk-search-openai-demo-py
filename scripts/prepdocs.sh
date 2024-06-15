@@ -66,7 +66,7 @@ fi
 echo "TESTING WHY WONT U WORK"
 
 if [ "$BRING_YOUR_OWN_DATA" = true ]; then
-  files="./$CUSTOM_DATA_PATH/*"
+  files="./../$CUSTOM_DATA_PATH/*"
   echo "BRING_YOUR_OWN_DATA is set to true."
 else
   files="./data/*"
