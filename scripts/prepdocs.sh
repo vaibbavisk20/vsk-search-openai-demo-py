@@ -69,7 +69,7 @@ if [ "$BRING_YOUR_OWN_DATA" = true ]; then
   files=`$PWD/../$CUSTOM_DATA_PATH/*`
   echo "BRING_YOUR_OWN_DATA is set to true."
 else
-  files='./data/*'
+  files=`./data/*`
   echo "BRING_YOUR_OWN_DATA is set to false."
 fi
 
