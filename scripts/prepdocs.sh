@@ -63,8 +63,17 @@ if [ -n "$USE_FEATURE_INT_VECTORIZATION" ]; then
   integratedVectorizationArg="--useintvectorization $USE_FEATURE_INT_VECTORIZATION"
 fi
 
+echo "TESTING WHY WONT U WORK"
 
-./.venv/bin/python ./app/backend/prepdocs.py './data/*' --verbose \
+if [ "$BRING_YOUR_OWN_DATA" = true ]; then
+  dataArg="../$CUSTOM_DATA_PATH/*"
+  echo "BRING_YOUR_OWN_DATA is set to true."
+else
+  dataArg='./data/*'
+  echo "BRING_YOUR_OWN_DATA is set to false."
+fi
+
+./.venv/bin/python ./app/backend/prepdocs.py $dataArg --verbose \
 --subscriptionid $AZURE_SUBSCRIPTION_ID  \
 --storageaccount "$AZURE_STORAGE_ACCOUNT" --container "$AZURE_STORAGE_CONTAINER" --storageresourcegroup $AZURE_STORAGE_RESOURCE_GROUP \
 --searchservice "$AZURE_SEARCH_SERVICE" --index "$AZURE_SEARCH_INDEX" \
