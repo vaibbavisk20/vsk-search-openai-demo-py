@@ -66,14 +66,14 @@ fi
 echo "TESTING WHY WONT U WORK"
 
 if [ "$BRING_YOUR_OWN_DATA" = true ]; then
-  files="./../$CUSTOM_DATA_PATH/*"
+  files=".././$CUSTOM_DATA_PATH/*"
   echo "BRING_YOUR_OWN_DATA is set to true."
 else
   files='./data/*'
   echo "BRING_YOUR_OWN_DATA is set to false."
 fi
 
-./.venv/bin/python ./app/backend/prepdocs.py \'$files\' --verbose \
+./.venv/bin/python ./app/backend/prepdocs.py $files --verbose \
 --subscriptionid $AZURE_SUBSCRIPTION_ID  \
 --storageaccount "$AZURE_STORAGE_ACCOUNT" --container "$AZURE_STORAGE_CONTAINER" --storageresourcegroup $AZURE_STORAGE_RESOURCE_GROUP \
 --searchservice "$AZURE_SEARCH_SERVICE" --index "$AZURE_SEARCH_INDEX" \
