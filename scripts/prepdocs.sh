@@ -2,7 +2,7 @@
 
 . ./scripts/loadenv.sh
 
-echo 'Running "prepdocs.py"'
+echo 'Running "prepdocs.py bash"'
 
 if [ -n "$AZURE_PUBLIC_NETWORK_ACCESS" ] && [ "$AZURE_PUBLIC_NETWORK_ACCESS" = "Disabled" ]; then
   echo "AZURE_PUBLIC_NETWORK_ACCESS is set to Disabled. Exiting."

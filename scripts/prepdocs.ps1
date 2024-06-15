@@ -6,7 +6,7 @@ if (Test-Path -Path "/usr") {
   $venvPythonPath = "./.venv/bin/python"
 }
 
-Write-Host 'Running "prepdocs.py"'
+Write-Host 'Running "prepdocs.py ps"'
 
 # if AZURE_PUBLIC_NETWORK_ACCESS env variable exists and is Disabled, exit immediately
 if ($env:AZURE_PUBLIC_NETWORK_ACCESS -eq "Disabled") {
@@ -66,6 +66,8 @@ if ($env:USE_FEATURE_INT_VECTORIZATION) {
 }
 
 azd env get-values
+
+Write-Host "TESTING WHY WONT U WORK"
 
 if ($env:BRING_YOUR_OWN_DATA -eq $true) {
   $dataArg = "`"../$env:CUSTOM_DATA_PATH/*`""
