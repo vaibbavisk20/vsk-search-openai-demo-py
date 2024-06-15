@@ -89,7 +89,7 @@ fi
 #   $integratedVectorizationArg \
 
 if [ "$BRING_YOUR_OWN_DATA" = true ]; then
-  ./.venv/bin/python ./app/backend/prepdocs.py \'.././$CUSTOM_DATA_PATH/\*\' --verbose \
+  ./.venv/bin/python ./app/backend/prepdocs.py .././$CUSTOM_DATA_PATH/\* --verbose \
   --subscriptionid $AZURE_SUBSCRIPTION_ID  \
   --storageaccount "$AZURE_STORAGE_ACCOUNT" --container "$AZURE_STORAGE_CONTAINER" --storageresourcegroup $AZURE_STORAGE_RESOURCE_GROUP \
   --searchservice "$AZURE_SEARCH_SERVICE" --index "$AZURE_SEARCH_INDEX" \
