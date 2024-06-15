@@ -69,7 +69,7 @@ if [ "$BRING_YOUR_OWN_DATA" = true ]; then
   files=".././$CUSTOM_DATA_PATH/\*"
   echo "BRING_YOUR_OWN_DATA is true = $files"
 else
-  files='./data/\*'
+  files="./data/\*"
   echo "BRING_YOUR_OWN_DATA is false = $files"
 fi
   
