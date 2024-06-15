@@ -102,7 +102,7 @@ if [ "$BRING_YOUR_OWN_DATA" = true ]; then
   $adlsGen2StorageAccountArg $adlsGen2FilesystemArg $adlsGen2FilesystemPathArg \
   $tenantArg $aclArg \
   $disableVectorsArg $localPdfParserArg $localHtmlParserArg \
-  $integratedVectorizationArg \
+  $integratedVectorizationArg 
 else
   ./.venv/bin/python ./app/backend/prepdocs.py './data/*' --verbose \
   --subscriptionid $AZURE_SUBSCRIPTION_ID  \
@@ -117,5 +117,5 @@ else
   $adlsGen2StorageAccountArg $adlsGen2FilesystemArg $adlsGen2FilesystemPathArg \
   $tenantArg $aclArg \
   $disableVectorsArg $localPdfParserArg $localHtmlParserArg \
-  $integratedVectorizationArg \
+  $integratedVectorizationArg 
 fi
