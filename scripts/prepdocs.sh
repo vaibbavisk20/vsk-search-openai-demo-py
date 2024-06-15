@@ -66,10 +66,10 @@ fi
 echo "TESTING WHY WONT U WORK"
 
 if [ "$BRING_YOUR_OWN_DATA" = true ]; then
-  dataArg="./../$CUSTOM_DATA_PATH/*"
+  files="./../$CUSTOM_DATA_PATH/*"
   echo "BRING_YOUR_OWN_DATA is set to true."
 else
-  dataArg='./data/*'
+  files='./data/*'
   echo "BRING_YOUR_OWN_DATA is set to false."
 fi
 
@@ -86,4 +86,5 @@ $searchImagesArg $visionEndpointArg \
 $adlsGen2StorageAccountArg $adlsGen2FilesystemArg $adlsGen2FilesystemPathArg \
 $tenantArg $aclArg \
 $disableVectorsArg $localPdfParserArg $localHtmlParserArg \
-$integratedVectorizationArg
+$integratedVectorizationArg \
+files $files 
