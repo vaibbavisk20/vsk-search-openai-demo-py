@@ -67,15 +67,11 @@ if ($env:USE_FEATURE_INT_VECTORIZATION) {
 
 azd env get-values
 
-Write-Host "TESTING WHY WONT U WORK"
-
 $cwd = (Get-Location)
 if ($env:BRING_YOUR_OWN_DATA -eq $true) {
   $dataArg = "`"$cwd/../$env:CUSTOM_DATA_PATH/*`""
-  Write-Host "BRING_YOUR_OWN_DATA is set to true."
 } else {
   $dataArg = "`"$cwd/data/*`""
-  Write-Host "BRING_YOUR_OWN_DATA is set to false."
 
 }
 
